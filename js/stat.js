@@ -2,7 +2,6 @@ window.renderStatistics = function(ctx, names, times) {
   var max = -1;
   var maxIndex = -1;
   var histogramHeight = 150; // px;
-  var step = histogramHeight / (max - 0); // px;
   var barWidth = 40; // px;
   var indent = 50; // px;
   var initialX = 120; // px;
@@ -28,21 +27,23 @@ window.renderStatistics = function(ctx, names, times) {
     }
   }
 
-  for (var i = 0; i < times.length; i++) {
-    Math.round(times[i]);
-    ctx.fillRect(initialX + indent * i, initialY, barWidth, times[i] * step); //fillRect(x, y, width, height)
-    if (names === 'Вы') {
+  var step = histogramHeight / (max - 0); // px;
+
+
+  for (i = 0; i < times.length; i++) {
+    if (names[i] == 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'rgba(255, 0, 0,' + Math.random(0, 1);
+      var randomNumber = getRandomNumber(0, 1);
+      ctx.fillStyle = 'rgba(17, 30, 209, ' + randomNumber + ')';
     }
-    ctx.fillText(names[i], initialX + indent * i, initialY + lineHeight); //illText(text, x, y)
-    ctx.fillText(times[i], initialX + indent * i, initialTimes); //illText(text, x, y)
+    ctx.fillRect(initialX + indent * i, initialY, barWidth, -times[i] * step);
+    ctx.fillStyle = 'black';
+    ctx.fillText(names[i], initialX + indent * i, initialY + lineHeight);
+    ctx.fillText(Math.round(times[i]), initialX + indent * i, initialTimes);
+  }
+
+  function getRandomNumber() {
+    return Math.random();
   }
 };
-
-// ctx.fillText('Худшее время: ' + max.toFixed(2) + 'мс у игрока ' + names[maxIndex], 120, 60);
-
-// function getRandoomNumber(0, 1) {
-//   return MathRandom.....; // Разобраться
-// };
