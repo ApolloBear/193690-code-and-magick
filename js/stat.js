@@ -1,24 +1,23 @@
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   var max = -1;
   var maxIndex = -1;
-  var histogramHeight = 150; // px;
-  var barWidth = 40; // px;
-  var indent = 50; // px;
-  var initialX = 120; // px;
-  var initialY = 250; // px;
-  var initialTimes = 80; //px;
-  var lineHeight = 15; // px;
+  var histogramHeight = 150;
+  var barWidth = 40;
+  var indent = 50;
+  var initialX = 120;
+  var initialY = 250;
+  var initialTimes = 80;
+  var lineHeight = 15;
   //Box
   ctx.fillRect(100, 10, 420, 270);
-  ctx.fillStyle = "rgba(255, 255, 255, 1)";
+  ctx.fillStyle = 'rgba(255, 255, 255, 1)';
   //Shadow
   ctx.fillRect(90, 0, 420, 270);
-  ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   //Text
-  ctx.font = "16px PT Mono";
-  ctx.fillText("Ура вы победили!", 140, 40);
-  ctx.fillText("Список результатов:", 140, 60);
-  //
+  ctx.font = '16px PT Mono';
+  ctx.fillText('Ура вы победили!', 140, 40);
+  ctx.fillText('Список результатов:', 140, 60);
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
     if (time > max) {
@@ -27,11 +26,11 @@ window.renderStatistics = function(ctx, names, times) {
     }
   }
 
-  var step = histogramHeight / (max - 0); // px;
+  var step = histogramHeight / (max - 0);
 
 
   for (i = 0; i < times.length; i++) {
-    if (names[i] == 'Вы') {
+    if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       var randomNumber = getRandomNumber(0, 1);
