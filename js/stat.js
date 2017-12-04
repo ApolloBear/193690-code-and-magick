@@ -1,6 +1,4 @@
 'use strict';
-  function foo() {
-}
 window.renderStatistics = function (ctx, names, times) {
   var max = -1;
   var histogramHeight = 150;
